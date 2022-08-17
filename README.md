@@ -1,2 +1,6 @@
 # jqexperiment
+
+```shell
+gradle bootRun
+```
  
