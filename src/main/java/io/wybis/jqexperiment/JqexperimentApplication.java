@@ -21,7 +21,12 @@ public class JqexperimentApplication implements CommandLineRunner {
         log.info("-----------------------------------------------");
 
 		List<ConditionConfig> ccs = new ArrayList<>();
-
+		ConditionConfig cc = ConditionConfig.builder()
+				.conditionKeyId("gender")
+				.conditionOperator("=")
+				.conditionValue("male")
+				.build();
+		ccs.add(cc);
 		String jqQuery = this.computeJQ(ccs);
 		log.info("JQ Query : {}", jqQuery);
 

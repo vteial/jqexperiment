@@ -10,28 +10,27 @@
  */
 package io.wybis.jqexperiment;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
- * Operator Enum.
+ * Conditional Configuration Rule DTO
  * 
  * @author A Kamil Khan
  * @version 1.0
  * @since 01/20/2022
  */
-public enum Operator {
-	@JsonProperty("OR")
-	OR("OR"), @JsonProperty("AND")
-	AND("AND");
+@Getter
+@Setter
+@NoArgsConstructor
+public class RuleDTO {
 
-	private String displayName;
-
-	Operator(String displayName) {
-		this.displayName = displayName;
-	}
-
-	public String getDisplayName() {
-		return displayName;
-	}
+	String type;
+	Integer order;
+	ActionDTO actions;
+	List<ConditionGroupDTO> conditionGroups;
 
 }
