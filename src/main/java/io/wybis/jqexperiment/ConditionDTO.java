@@ -4,12 +4,10 @@ import java.util.Date;
 
 //import com.fasterxml.jackson.annotation.JsonInclude;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Data
+@Builder
 //@Getter
 //@Setter
 //@NoArgsConstructor
