@@ -2,16 +2,15 @@ package io.wybis.jqexperiment;
 
 import java.util.List;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
+@Builder
 public class ConditionGroupDTO {
 
 	List<ConditionDTO> conditions;
+
 	Operator conditionWithPrecedingGroup;
+
 	Integer group;
 }

@@ -18,25 +18,77 @@ public class JqexperimentApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        log.info("-----------------------------------------------");
+        log.info("-------------------------------------");
 
-		List<ConditionDTO> ccs = new ArrayList<>();
-		ConditionDTO conditionDTO = ConditionDTO.builder()
-				.conditionKeyId("gender")
+		List<ConditionGroupDTO> cgs = new ArrayList<>();
+
+		int gcount = 1;
+		ConditionGroupDTO cg = ConditionGroupDTO.builder()
+				.group(gcount)
+				.build();
+		int ccount = 1;
+		ConditionDTO c = ConditionDTO.builder()
+				.order(ccount)
 				.conditionOperator("=")
+				.conditionKeyType("REQUESTHEADERS")
+				.conditionKey("gender")
+				.conditionOnType("value")
 				.conditionValue("male")
 				.build();
-		ccs.add(conditionDTO);
-		String jqQuery = this.computeJQ(ccs);
+		cg.conditions.add(c);
+		ccount++;
+		c = ConditionDTO.builder()
+				.order(ccount)
+				.conditionWithPrecedingSibling(new Operator("AND"))
+				.conditionOperator("=")
+				.conditionKeyType("REQUESTHEADERS")
+				.conditionKey("name")
+				.conditionOnType("value")
+				.conditionValue("john")
+				.build();
+		cg.conditions.add(c);
+		cgs.add(cg);
+
+//		gcount++;
+//		cg = ConditionGroupDTO.builder()
+//				.conditionWithPrecedingGroup(new Operator("AND"))
+//				.group(gcount)
+//				.build();
+//		ccount = 1;
+//		ConditionDTO c = ConditionDTO.builder()
+//				.order(ccount)
+//				.conditionOperator("=")
+//				.conditionKeyType("REQUESTHEADERS")
+//				.conditionKey("gender")
+//				.conditionOnType("value")
+//				.conditionValue("male")
+//				.build();
+//		cg.conditions.add(c);
+//		ccount++;
+//		c = ConditionDTO.builder()
+//				.order(ccount)
+//				.conditionWithPrecedingSibling(new Operator("AND"))
+//				.conditionOperator("=")
+//				.conditionKeyType("REQUESTHEADERS")
+//				.conditionKey("name")
+//				.conditionOnType("value")
+//				.conditionValue("john")
+//				.build();
+//		cg.conditions.add(c);
+//		cgs.add(cg);
+
+
+
+		String jqQuery = this.computeJQ(cgs);
 		log.info("JQ Query : {}", jqQuery);
 
-        log.info("-----------------------------------------------");
+        log.info("-------------------------------------");
     }
 
-	String computeJQ(List<ConditionDTO> conditions) {
+	String computeJQ(List<ConditionGroupDTO> cgs) {
 		StringBuilder jqQuery = new StringBuilder("jq '");
 
-		for(ConditionDTO condition : conditions) {
+		for(ConditionGroupDTO cg : cgs) {
 
 		}
 

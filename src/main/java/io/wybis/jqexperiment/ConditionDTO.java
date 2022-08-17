@@ -13,6 +13,11 @@ import lombok.*;
 //@NoArgsConstructor
 public class ConditionDTO {
 
+	String conditionKeyType;
+
+	String conditionKey;
+
+	//-----------
 	String uuid;
 	
 	Integer order;

@@ -1,0 +1,61 @@
+[
+  {
+    "group": 1,
+    "conditions": [
+      {
+        "order": 1,
+        "conditionOperator": "=",
+        "conditionKeyType": "REQUESTHEADERS",
+        "conditionKey": "gender",
+        "conditionOnType": "value",
+        "conditionValue": "male"
+      },
+      {
+        "order": 2,
+        "conditionWithPrecedingSibling": "AND",
+        "conditionOperator": "=",
+        "conditionKeyType": "REQUESTHEADERS",
+        "conditionKey": "name",
+        "conditionOnType": "value",
+        "conditionValue": "john"
+      }
+    ]
+  },
+  {
+    "group": 2,
+    "conditionWithPrecedingGroup": "AND",
+    "conditions": [
+      {
+        "order": 1,
+        "conditionOperator": "=",
+        "conditionKeyType": "QUERYPARAMETERS",
+        "conditionKey": "degree",
+        "conditionOnType": "value",
+        "conditionValue": "bsc"
+      },
+      {
+        "order": 2,
+        "conditionWithPrecedingSibling": "OR",
+        "conditionOperator": "=",
+        "conditionKeyType": "QUERYPARAMETERS",
+        "conditionKey": "age",
+        "conditionOnType": "value",
+        "conditionValue": "45"
+      }
+    ]
+  },
+  {
+    "group": 3,
+    "conditionWithPrecedingGroup": "AND",
+    "conditions": [
+      {
+        "order": 1,
+        "conditionOperator": "=",
+        "conditionKeyType": "REQUESTBODY",
+        "conditionKey": "author.following_url",
+        "conditionOnType": "value",
+        "conditionValue": "a.com"
+      }
+    ]
+  }
+]
