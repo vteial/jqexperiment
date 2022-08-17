@@ -20,23 +20,23 @@ public class JqexperimentApplication implements CommandLineRunner {
     public void run(String... args) {
         log.info("-----------------------------------------------");
 
-		List<ConditionConfig> ccs = new ArrayList<>();
-		ConditionConfig cc = ConditionConfig.builder()
+		List<ConditionDTO> ccs = new ArrayList<>();
+		ConditionDTO conditionDTO = ConditionDTO.builder()
 				.conditionKeyId("gender")
 				.conditionOperator("=")
 				.conditionValue("male")
 				.build();
-		ccs.add(cc);
+		ccs.add(conditionDTO);
 		String jqQuery = this.computeJQ(ccs);
 		log.info("JQ Query : {}", jqQuery);
 
         log.info("-----------------------------------------------");
     }
 
-	String computeJQ(List<ConditionConfig> ccs) {
+	String computeJQ(List<ConditionDTO> conditions) {
 		StringBuilder jqQuery = new StringBuilder("jq '");
 
-		for(ConditionConfig cc : ccs) {
+		for(ConditionDTO condition : conditions) {
 
 		}
 
